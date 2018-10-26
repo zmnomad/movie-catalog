@@ -29,8 +29,8 @@ jelezze a felhasználónak, és emelje ki a hibás beviteli mezőket. A jól bev
 űrlapban.
 
 Karbantarthatóság: könnyed lehessen bővíteni, a különböző típusú fájlok külön csoportosítva,
-ésszerűen legyenek felbontva, a könnyebb fejleszthetőség miatt
- ```
+ésszerűen legyenek felbontva, a könnyebb fejleszthetőség miatt.
+
 ##Adatbázis terv
-![data](images/database.png)
+![data](https://raw.githubusercontent.com/zmnomad/movie-catalog/master/images/database.png)
 
