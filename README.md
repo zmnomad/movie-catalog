@@ -20,6 +20,7 @@ Technológiák:  Java Spring Boot, AngularJS
 * Filmek, rendezők szűrése
 
 ### Nem funkcionális követelmények
+
 Könnyű áttekinthetőség: külön színnel jelölés (pl. User, ADMIN)
 
 Használhatóság: Könnyű áttekinthetőség, ésszerű elrendezés, könnyed kezelhetőség
@@ -31,6 +32,7 @@ jelezze a felhasználónak, és emelje ki a hibás beviteli mezőket. A jól bev
 Karbantarthatóság: könnyed lehessen bővíteni, a különböző típusú fájlok külön csoportosítva,
 ésszerűen legyenek felbontva, a könnyebb fejleszthetőség miatt.
 
-##Adatbázis terv
+###Adatbázis terv
+
 ![data](https://raw.githubusercontent.com/zmnomad/movie-catalog/master/images/database.png)
 
