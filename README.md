@@ -32,4 +32,5 @@ Karbantarthatóság: könnyed lehessen bővíteni, a különböző típusú fáj
 ésszerűen legyenek felbontva, a könnyebb fejleszthetőség miatt
  ```
 ##Adatbázis terv
-![Adatbázis](images/database.png)
+![data](images/database.png)
+
