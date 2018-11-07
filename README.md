@@ -36,3 +36,8 @@ Karbantarthatóság: könnyed lehessen bővíteni, a különböző típusú fáj
 
 ![data](https://raw.githubusercontent.com/zmnomad/movie-catalog/master/images/database.png)
 
+
+### Használati eset diagram
+
+![usecasa](https://raw.githubusercontent.com/zmnomad/movie-catalog/master/images/UseCaseDiagram.png)
+
