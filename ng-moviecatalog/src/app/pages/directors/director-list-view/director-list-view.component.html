@@ -1,0 +1,96 @@
+<section class="hero is-link is-hidden-mobile">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Directors
+      </h1>
+      <h2 class="subtitle">
+        Find your director, add new director or get to know new directors!
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="tile is-ancestor" id="tile-container">
+      <div class="tile is-parent is-4 is-vertical">
+
+        <div class="tile is-child box notification is-dark">
+          <div class="field is-grouped">
+            <p class="control is-expanded">
+              <input [(ngModel)]="searchTerm" (keyup)="searchDirector(searchTerm)" class="input" type="text" placeholder="Search">
+            </p>
+            <p class="control">
+              <a class="button is-dark is-inverted" (click)="resetSearch()">
+                Reset
+              </a>
+            </p>
+          </div>
+          <p class="subtitle is-6">Haven't found your favourite director?</p>
+          <a routerLink="/director/new" id="newDirector" class="title is-4">Add new!</a>
+        </div>
+
+        <div class="tile is-child box notification is-danger">
+          <button (click)="checkRandomDirector()" class="button is-medium is-light is-inverted">I'm lucky</button>
+          <p class="subtitle">Time to learn something new</p>
+        </div>
+
+      </div>
+      <div class="tile is-parent is-4 is-vertical">
+
+        <div class="tile is-child box">
+          <div id="director-table-container">
+            <table class="table is-hoverable is-fullwidth">
+              <tbody>
+              <tr *ngFor="let director of currentPage">
+                <td class="has-text-centered">
+                  <a (click)="selectDirector(director)">
+                    <div class="title is-5">
+                      {{ director.name }}
+                    </div>
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <nav class="pagination is-small" role="navigation" aria-label="pagination">
+            <a class="pagination-previous" (click)="previousPage()">Previous</a>
+            <a class="pagination-next" (click)="nextPage()">Next</a>
+            <ul class="pagination-list">
+              <li>
+                <a class="pagination-link" [class.is-current]="page === 1" aria-label="Goto page 1" (click)="goToPage(1)">1</a>
+              </li>
+              <li *ngIf="pageCount > 4">
+                <span class="pagination-ellipsis">&hellip;</span>
+              </li>
+              <li *ngFor="let i of pageNumbers">
+                <a class="pagination-link" [class.is-current]="page === i" attr.aria-label="Goto page {{i}}" (click)="goToPage(i)">{{ i }}</a>
+              </li>
+              <li *ngIf="pageCount > 4">
+                <span class="pagination-ellipsis">&hellip;</span>
+              </li>
+              <li *ngIf="pageCount > 1">
+                <a class="pagination-link" [class.is-current]="page === pageCount" attr.aria-label="Goto page {{pageCount}}" (click)="goToPage(pageCount)">{{ pageCount }}</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+      <div class="tile is-parent is-4 is-vertical">
+        <div class="tile is-child box notification is-light">
+          <app-director-item [director]="currentDirector"></app-director-item>
+          <div *ngIf="currentDirector && authenticationService.isAdmin()">
+            <a class="button is-small is-dark is-inverted" routerLink="/director/edit/{{currentDirector.id}}">Edit</a>
+            <button (click)="removeDirector(currentDirector.id)" class="button is-small is-dark">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

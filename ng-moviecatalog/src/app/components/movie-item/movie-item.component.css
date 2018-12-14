@@ -1,0 +1,13 @@
+.no-text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-item {
+  -webkit-filter: brightness(100%);
+}
+
+.movie-item:hover {
+  -webkit-filter: brightness(70%);
+}

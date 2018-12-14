@@ -1,0 +1,8 @@
+<a routerLink="/movie/{{movie.id}}">
+  <div class="notification is-primary movie-item">
+    <h4 class="title is-4 no-text-overflow">
+      {{ movie.title }}
+    </h4>
+    <h6 class="subtitle is-6 no-text-overflow">by {{ movie.directors[0].name }}</h6>
+  </div>
+</a>

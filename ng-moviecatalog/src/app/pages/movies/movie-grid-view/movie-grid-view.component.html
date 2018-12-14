@@ -1,0 +1,30 @@
+<section class="section">
+  <div class="level notification">
+    <div class="level-left">
+      <div class="level-item">
+        <div class="field is-grouped">
+          <p class="control is-expanded">
+            <input [(ngModel)]="searchTerm" (keyup)="searchMovie(searchTerm)" class="input" type="text" placeholder="Search">
+          </p>
+          <p class="control">
+            <a class="button is-dark" (click)="resetSearch()">
+              Reset
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="level-right">
+      <a routerLink="/movies/new" class="title is-4">Add new movie!</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="columns is-multiline has-text-centered">
+      <div class="column is-4" *ngFor="let movie of filteredMovies">
+        <app-movie-item [movie]="movie"></app-movie-item>
+      </div>
+    </div>
+  </div>
+</section>

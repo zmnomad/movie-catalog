@@ -1,0 +1,10 @@
+<a routerLink="/review/{{review.id}}">
+  <div class="notification is-link review-item">
+    <h4 class="title is-4 no-text-overflow">
+      {{ review.title }}
+    </h4>
+    <p>{{review.user.username}}
+    <p>{{review.date}}</p>
+    <p>{{ review.review }}</p>
+  </div>
+</a>

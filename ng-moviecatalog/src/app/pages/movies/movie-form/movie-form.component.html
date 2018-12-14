@@ -1,0 +1,108 @@
+<section class="section">
+  <div class="columns">
+    <div class="column is-6 is-offset-3">
+
+      <div *ngIf="error" class="notification is-dark">
+        Unsuccessful attempt. Please try again.
+      </div>
+
+      <form *ngIf="directors && (!edit || (edit && movie.directors))" [formGroup]="movieForm">
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label for="Title" class="label">Title</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input"
+                       type="text"
+                       id="title"
+                       name="title"
+                       placeholder="Title"
+                       [(ngModel)]="movie.title"
+                       formControlName="title"
+                       [class.is-danger]="title.hasError('required') && title.touched">
+              </div>
+              <p *ngIf="title.hasError('required') && title.touched" class="help is-danger">Title is required</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label for="director" class="label">Director</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <div class="select">
+                  <select name="director"
+                          id="director"
+                          [(ngModel)]="movie.directors[0].id"
+                          formControlName="director">
+                    <option *ngFor="let curr_director of directors" [ngValue]="curr_director.id">{{curr_director.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label for="genre" class="label">Genre</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input"
+                       type="text"
+                       id="genre"
+                       name="genre"
+                       placeholder="Genre"
+                       [(ngModel)]="movie.genre"
+                       formControlName="genre"
+                       [class.is-danger]="genre.hasError('required') && genre.touched">
+              </div>
+              <p *ngIf="genre.hasError('required') && genre.touched" class="help is-danger">Genre is required</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label for="pDate" class="label">Publication date</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input"
+                       type="number"
+                       id="pDate"
+                       name="pDate"
+                       placeholder="Publication date"
+                       [(ngModel)]="movie.publicationDate"
+                       formControlName="pDate"
+                       [class.is-danger]="(pDate.hasError('required') || pDate.hasError('min') || pDate.hasError('max')) && pDate.touched">
+              </div>
+              <p *ngIf="pDate.hasError('required') && pDate.touched" class="help is-danger">Publication date is invalid</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-grouped is-grouped-centered">
+          <div class="control">
+            <button class="button is-link" (click)="submit(movie)" [disabled]="!movieForm.valid">
+              Submit
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+      
+
+    </div>
+  </div>
+</section>

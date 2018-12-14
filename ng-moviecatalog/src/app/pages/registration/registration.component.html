@@ -1,0 +1,64 @@
+<section class="section">
+  <div class="container">
+    <div class="column is-6 is-offset-3">
+      <h3 class="title has-text-centered">Registration</h3>
+      <h5 class="subtitle has-text-centered">Create an account and unlock all features!</h5>
+
+      <div *ngIf="error" class="notification is-danger">
+        Unsuccessful registration. Please try again.
+      </div>
+
+      <form [formGroup]="regForm" novalidate>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label for="username" class="label">Username</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input type="text" class="input" placeholder="Username" id="username" formControlName="username" [class.is-danger]="username.hasError('required') && username.touched">
+              </div>
+              <p *ngIf="username.hasError('required') && username.touched" class="help is-danger">Username is required</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label for="password" class="label">Password</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input type="password" class="input" placeholder="Password" id="password" formControlName="password" [class.is-danger]="password.hasError('required') && password.touched">
+              </div>
+              <p *ngIf="password.hasError('required') && password.touched" class="help is-danger">Password is required</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label for="email" class="label">Email</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input type="email" class="input" placeholder="Email address" id="email" formControlName="email" [class.is-danger]="(email.hasError('required') || email.hasError('email') ) && email.touched">
+              </div>
+              <p *ngIf="email.hasError('required') && email.touched" class="help is-danger">Email address is required</p>
+              <p *ngIf="email.hasError('email') && email.touched" class="help is-danger">Please enter a valid email address</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-grouped is-grouped-centered">
+          <div class="control">
+            <button id="submitRegistration" class="button is-primary" (click)="submit()" [disabled]="!regForm.valid">Register</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>

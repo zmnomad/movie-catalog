@@ -1,0 +1,37 @@
+<nav class="navbar is-dark">
+  <div class="navbar-brand">
+    <a routerLink="/" class="navbar-item has-text-weight-semibold is-size-5">
+      Movie Catalog
+    </a>
+
+    <button class="button navbar-burger burger is-dark" #burger (click)="toggleBurger()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="navbar-menu" id="menu" #menu (click)="disableBurger()">
+    <div class="navbar-start">
+      <a id="toDirectors" routerLink="/directors" class="navbar-item">Directors</a>
+      <a id="toMovies" routerLink="/movies" class="navbar-item">Movies</a>
+    </div>
+
+    <div class="navbar-end">
+      <a *ngIf="!authService.loggedIn" routerLink="/login" class="navbar-item">
+        Login
+      </a>
+      <a *ngIf="!authService.loggedIn" routerLink="/register" class="navbar-item">
+        Register
+      </a>
+
+      <a *ngIf="authService.loggedIn" class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">{{ authService.user.username }}</a>
+        <div class="navbar-dropdown">
+          <a (click)="logout()" class="navbar-item">Log out</a>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</nav>

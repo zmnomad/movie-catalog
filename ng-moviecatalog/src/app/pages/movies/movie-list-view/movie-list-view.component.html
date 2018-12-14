@@ -1,0 +1,92 @@
+<section class="hero is-light is-hidden-mobile">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Movies
+      </h1>
+      <h2 class="subtitle">
+        Find your movie, add new movie or get to know new movies!
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="tile is-ancestor" id="tile-container">
+      <div class="tile is-parent is-4 is-vertical">
+
+        <div class="tile is-child box notification is-link">
+          <div class="field is-grouped">
+            <p class="control is-expanded">
+              <input [(ngModel)]="searchTerm" (keyup)="searchMovie(searchTerm)" class="input" type="text" placeholder="Search">
+            </p>
+            <p class="control">
+              <a class="button is-link is-inverted" (click)="resetSearch()">
+                Reset
+              </a>
+            </p>
+          </div>
+          <p class="subtitle is-6">Haven't found your favourite movie?</p>
+          <p class="title is-4">Add new!</p>
+        </div>
+
+        <div class="tile is-child box notification is-warning">
+          <button (click)="checkRandomMovie()" class="button is-medium is-warning is-inverted">I'm lucky</button>
+          <p class="subtitle">Time to learn something new</p>
+        </div>
+
+      </div>
+      <div class="tile is-parent is-4 is-vertical">
+
+        <div class="tile is-child box">
+          <div id="movie-table-container">
+            <table class="table is-hoverable is-fullwidth">
+              <tbody>
+              <tr *ngFor="let movie of currentPage">
+                <td class="has-text-centered">
+                  <a (click)="selectMovie(movie)">
+                    <div class="title is-5">
+                      {{ movie.title }}
+                    </div>
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <nav class="pagination is-small" role="navigation" aria-label="pagination">
+            <a class="pagination-previous" (click)="previousPage()">Previous</a>
+            <a class="pagination-next" (click)="nextPage()">Next</a>
+            <ul class="pagination-list">
+              <li>
+                <a class="pagination-link" [class.is-current]="page === 1" aria-label="Goto page 1" (click)="goToPage(1)">1</a>
+              </li>
+              <li *ngIf="pageCount > 4">
+                <span class="pagination-ellipsis">&hellip;</span>
+              </li>
+              <li *ngFor="let i of pageNumbers">
+                <a class="pagination-link" [class.is-current]="page === i" attr.aria-label="Goto page {{i}}" (click)="goToPage(i)">{{ i }}</a>
+              </li>
+              <li *ngIf="pageCount > 4">
+                <span class="pagination-ellipsis">&hellip;</span>
+              </li>
+              <li *ngIf="pageCount > 1">
+                <a class="pagination-link" [class.is-current]="page === pageCount" attr.aria-label="Goto page {{pageCount}}" (click)="goToPage(pageCount)">{{ pageCount }}</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+      <div class="tile is-parent is-4 is-vertical">
+        <div class="tile is-child box notification is-warning">
+          <app-movie-item [movie]="currentMovie"></app-movie-item>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

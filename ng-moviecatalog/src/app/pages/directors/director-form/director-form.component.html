@@ -1,0 +1,85 @@
+<section class="section">
+  <div class="columns">
+    <div class="column is-6 is-offset-3">
+
+      <div *ngIf="error" class="notification is-danger">
+        Unsuccessful attempt. Please try again.
+      </div>
+
+      <form [formGroup]="directorForm">
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label for="name" class="label">Name</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input"
+                       type="text"
+                       id="name"
+                       name="name"
+                       placeholder="Name"
+                       [(ngModel)]="director.name"
+                       formControlName="name"
+                       [class.is-danger]="name.hasError('required') && name.touched">
+              </div>
+              <p *ngIf="name.hasError('required') && name.touched" class="help is-danger">Name is required</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label for="nationality" class="label">Nationality</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input"
+                       type="text"
+                       id="nationality"
+                       name="nationality"
+                       placeholder="Nationality"
+                       [(ngModel)]="director.nationality"
+                       formControlName="nationality"
+                       [class.is-danger]="nationality.hasError('required') && nationality.touched">
+              </div>
+              <p *ngIf="nationality.hasError('required') && nationality.touched" class="help is-danger">Nationality is required</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label for="bio" class="label">Biography</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <textarea class="textarea"
+                          id="bio"
+                          name="bio"
+                          placeholder="e.g. Best in the genre, won this and that award."
+                          [(ngModel)]="director.bio"
+                          formControlName="bio"
+                          [class.is-danger]="bio.hasError('required') && bio.touched"></textarea>
+              </div>
+              <p *ngIf="bio.hasError('required') && bio.touched" class="help is-danger">Biography is required</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-grouped is-grouped-centered">
+          <div class="control">
+            <button id="submitDirector" class="button is-primary" (click)="submit(director)" [disabled]="!directorForm.valid">
+              Submit
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</section>

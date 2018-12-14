@@ -1,0 +1,9 @@
+<div *ngIf="!director">
+  <h2 class="title">No director selected.</h2>
+  <h4 class="subtitle">Select a director to see more details!</h4>
+</div>
+<div *ngIf="director">
+  <p class="title is-2">{{ director.name }}</p>
+  <p class="subtitle is-6">{{ director.nationality }}</p>
+  <p>{{ director.bio }}</p>
+</div>
